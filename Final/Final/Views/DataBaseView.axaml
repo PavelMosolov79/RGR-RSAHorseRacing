@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+			    Width="1000" Height="600"
+             x:Class="Final.Views.DataBaseView" Background="White">
+	<Grid ColumnDefinitions="*" RowDefinitions="20*,*">
+		<TabControl Grid.Column="0" Grid.Row="0">
+			
+			<TabItem  Header="Horse" VerticalContentAlignment="Center">
+				<Grid >
+					<DataGrid BorderBrush="Black" Background="LightGray" Items="{Binding $parent[Window].DataContext.Horse_var}" AutoGenerateColumns="False">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+							<DataGridTextColumn Header="ResultId" Binding="{Binding ResultId}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			
+			<TabItem    Header="Jockey" VerticalContentAlignment="Center">
+				<Grid>
+					<DataGrid  BorderBrush="Black" Background="LightGray" Items="{Binding $parent[Window].DataContext.Jockey_var}" AutoGenerateColumns="False">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>	
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			
+			<TabItem   Header="Owner" VerticalContentAlignment="Center">
+				<Grid>
+					<DataGrid BorderBrush="Black" Background="LightGray" Items="{Binding $parent[Window].DataContext.Owner_var}" AutoGenerateColumns="False">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			
+			<TabItem  Header="Trainer" VerticalContentAlignment="Center">
+				<Grid>
+					<DataGrid BorderBrush="Black" Background="LightGray" Items="{Binding $parent[Window].DataContext.Trainer_var}" AutoGenerateColumns="False">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			
+			<TabItem  Header="Result" VerticalContentAlignment="Center">
+				<Grid>
+					<DataGrid BorderBrush="Black" Background="LightGray" Items="{Binding $parent[Window].DataContext.Result_var}" AutoGenerateColumns="False">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="Runs" Binding="{Binding Runs}"/>
+							<DataGridTextColumn Header="Wins" Binding="{Binding Wins}"/>
+							<DataGridTextColumn Header="Win" Binding="{Binding Win}"/>
+							<DataGridTextColumn Header="_2nd" Binding="{Binding _2nd}"/>
+							<DataGridTextColumn Header="_3nd" Binding="{Binding _3nd}"/>
+							<DataGridTextColumn Header="Other" Binding="{Binding Other}"/>
+							<DataGridTextColumn Header="Places" Binding="{Binding Places}"/>
+							<DataGridTextColumn Header="Place" Binding="{Binding Place}"/>
+							<DataGridTextColumn Header="WinStake" Binding="{Binding WinStake}"/>
+							<DataGridTextColumn Header="TotalStake" Binding="{Binding TotalStake}"/>
+							<DataGridTextColumn Header="Year" Binding="{Binding Year}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>	
+		</TabControl>
+	</Grid>
+</UserControl>
