@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RGR.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:RGR.Views"
+        xmlns:model="using:RGR.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RGR.Views.MainWindow" Background="#6C8CD5"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RGR">
+  
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<DockPanel>
+		<Menu Background="#008500" DockPanel.Dock="Top" VerticalAlignment="Center">
+			<MenuItem Header="File" Foreground="White">
+				<MenuItem Header="Exit" Background="#008500" Foreground="White"/>
+			</MenuItem>
+			<MenuItem Header="About" Foreground="White" Click="AboutWindow"/>
+		</Menu>
+		
+		<Grid RowDefinitions="40,*" ColumnDefinitions="*">
+			<Grid Grid.Row="0" Grid.Column="0">
+				<ListBox Items="{Binding Tables}" SelectionChanged="OnSelect" x:Name="myTabs" Grid.Row="0" Grid.Column="1" Background="#6F8282" Foreground="White">
+					<ListBox.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Orientation="Horizontal"/>
+						</ItemsPanelTemplate>
+					</ListBox.ItemsPanel>
+
+					<ListBox.DataTemplates>
+						<DataTemplate DataType="{x:Type model:MyQuery}">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="{Binding TableName}" />
+								<Button Click="deleteQuer" CommandParameter="{Binding}">
+									<Image Source="/Assets/close.png" Height="10"/>
+								</Button>
+							</StackPanel>
+						</DataTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding TableName}" />
+						</DataTemplate>
+					</ListBox.DataTemplates>
+				</ListBox>
+			</Grid>
+
+			<Grid Grid.Row="1" Grid.Column="0">
+				<Grid RowDefinitions="*" ColumnDefinitions="*,200">
+
+					<Grid Grid.Column="0">
+						<Grid RowDefinitions="20,*,20" ColumnDefinitions="20,*,20" Grid.Column="1" Grid.Row="1">
+							<Border BorderBrush="White"  Background="LightGray" Grid.Column="1" Grid.Row="1">
+								<DataGrid Background="White" x:Name="dGrid" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" IsReadOnly="False">
+
+								</DataGrid>
+							</Border>
+						</Grid>
+					</Grid>
+
+					<Grid Grid.Column="2" >
+						<Grid ColumnDefinitions="25,*,25" RowDefinitions="20,50,20,50,20,50,20,50">
+							<Button Content="Add Row" Grid.Row="1" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+							<Button Content="Delete Row" Grid.Row="3" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+							<Button Content="Save" Command="{Binding OnClick}" Grid.Row="5" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+							<Button Content="Request Manager" Click="showQueryWindow" Grid.Row="7" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+						</Grid>
+					</Grid>
+
+				</Grid>
+			</Grid>
+		</Grid>
+	</DockPanel>
+</Window>
